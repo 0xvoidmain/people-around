@@ -4,13 +4,13 @@ body {
   overflow: hidden;
 }
 
-#map {
+/*#map {
   height: calc(100vh + 25px) !important;
 }
 
 .gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
   bottom: 80px !important;
-}
+}*/
 
 .marker {
   width: 60px;
