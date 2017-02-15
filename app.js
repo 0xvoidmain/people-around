@@ -9,7 +9,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index', {
+    mode: process.env.NODE_ENV
+  });
 })
 
 app.listen(process.env.PORT || 3000, function () {
