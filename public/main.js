@@ -51,7 +51,7 @@ function initMap() {
 		},
 		scrollwheel: true,
 		styles: mapStyles,
-		zoom: 15,
+		zoom: 16,
 		disableDoubleClickZoom: true,
 		zoomControl: true,
 		mapTypeControl: false,

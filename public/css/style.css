@@ -45,7 +45,6 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
   transition-duration: 0.3s;
   transition-property: all;
   background: white;
-  cursor: pointer;
 }
 .marker:after {
   top: calc(100% - 1px);
@@ -76,6 +75,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
   overflow: hidden;
   transition-property: all;
   transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 .marker-info {
@@ -109,6 +109,55 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
   display:inline-block;
 }
 
+.marker-action {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 75px;
+  opacity: 0;
+  z-index: 1;
+  display: none;
+  transition-duration: 0.2s;
+  transition-delay: 0.1s;
+  transition-property: all;
+}
+
+.marker-action-btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: transparent;
+  padding: 2px;
+  opacity: 0.8;
+  transition-duration: 0.1s;
+  transition-property: all;
+  cursor: pointer;
+  outline: none;
+  margin-top: 8px;
+}
+
+.marker-action-btn:hover {
+  opacity: 1;
+}
+
+.icon {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.icon-chat {
+  background-image: url(/imgs/chat.svg);
+}
+.icon-love {
+  background-image: url(/imgs/love.svg);
+}
+.icon-hand {
+  background-image: url(/imgs/hand.svg);
+}
+
 .marker-expand {
   width: 160px;
   height: 160px;
@@ -120,6 +169,13 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .marker-expand .marker-info {
   opacity: 1;
 }
+
+.marker-expand .marker-action {
+  opacity: 1;
+  right: -37px;
+  display: block;
+}
+
 
 .marker-expand .marker-img {
   border-radius: 4px;

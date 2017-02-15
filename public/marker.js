@@ -44,10 +44,19 @@ Marker.prototype.draw = function() {
 					<div class="marker-status">' + this.args.status + '</div>\
 				</div>\
 			</div>\
+			<div class="marker-action">\
+				<button class="marker-action-btn icon icon-love">\
+				</button>\
+				<button class="marker-action-btn icon icon-chat">\
+				</button>\
+			</div>\
 		</div>')[0];
 
 		google.maps.event.addDomListener(div, "click", function(event) {
 			isMarkerClick = true;
+			if ($(event.target).hasClass('marker-action-btn')) {
+				return;
+			}
 			var e = $(event.currentTarget);
 			if (markerSelected && markerSelected.attr('id') !== e.attr('id')) {
 				collapse(markerSelected);
