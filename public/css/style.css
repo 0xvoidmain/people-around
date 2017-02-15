@@ -1,14 +1,15 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-.left-panel {
-  background: red;
+#map {
+  height: calc(100vh + 25px) !important;
 }
 
-.right-panel {
-  background: green;
+.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
+  bottom: 80px !important;
 }
 
 .marker {
