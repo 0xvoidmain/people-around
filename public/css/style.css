@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.left-panel {
+  background: red;
+}
+
+.right-panel {
+  background: green;
+}
+
+.marker {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 2;
+  padding: 2px;
+  transition-duration: 0.3s;
+  transition-property: all;
+  background: white;
+  cursor: pointer;
+}
+.marker:after {
+  top: calc(100% - 1px);
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #ffffff;
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.marker-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  transition-property: all;
+  transition-duration: 0.4s;
+}
+
+.marker-info {
+  opacity: 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  max-height: 55px;
+  width: 150px;
+  overflow: hidden;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  transition-property: all;
+  transition-duration: 0.1s;
+}
+
+.marker-name {
+  color: white;
+  font-size: 13px;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.marker-status {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 100;
+  text-transform: lowercase;
+  display:inline-block;
+}
+
+.marker-expand {
+  width: 160px;
+  height: 160px;
+  border-radius: 4px;
+  padding: 4px;
+  z-index: 99999;
+}
+
+.marker-expand .marker-info {
+  opacity: 1;
+}
+
+.marker-expand .marker-img {
+  border-radius: 4px;
+}
