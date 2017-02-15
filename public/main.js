@@ -50,7 +50,7 @@ function initMap() {
 		styles: mapStyles,
 		zoom: 15,
 		disableDoubleClickZoom: true,
-		zoomControl: false,
+		zoomControl: true,
 		mapTypeControl: false,
 		scaleControl: false,
 		streetViewControl: false,

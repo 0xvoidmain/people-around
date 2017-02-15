@@ -1,16 +1,31 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
+#app {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
 #map {
   height: 100vh;
 }
-/*
+
+.action-bar {
+  height: 40px;
+  background: #ffffff;
+  border-top: 1px solid #e8e8e8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999;
+}
+
 .gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
-  bottom: 80px !important;
-}*/
+  bottom: 95px !important;
+}
 
 .marker {
   width: 60px;
