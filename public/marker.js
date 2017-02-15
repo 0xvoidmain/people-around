@@ -1,10 +1,34 @@
+var markerSelected = null;
+var isMarkerClick = false;
+function expand(e) {
+	if (!e.hasClass('marker-expand')) {
+		var top = parseFloat(e.css('top'));
+		var left = parseFloat(e.css('left'));
+		e.addClass('marker-expand');
+		e.css('top', top + 64 - 168);
+		e.css('left', left + 32 - 84);
+	}
+}
+
+function collapse(e) {
+	if (e.hasClass('marker-expand')) {
+		var top = parseFloat(e.css('top'));
+		var left = parseFloat(e.css('left'));
+		e.removeClass('marker-expand');
+		e.css('top', top - 64 + 168);
+		e.css('left', left - 32 + 84);
+	}
+}
 
 function Marker(latlng, map, args) {
 	this.latlng = latlng;
 	this.args = args;
 	this.setMap(map);
 }
-
+Marker.collapseAll = function() {
+	!isMarkerClick && markerSelected && collapse(markerSelected);
+	isMarkerClick = false;
+}
 Marker.prototype = new google.maps.OverlayView();
 Marker.prototype.draw = function() {
 
@@ -13,7 +37,7 @@ Marker.prototype.draw = function() {
 	var div = this.div;
 
 	if (!div) {
-		div = this.div = $.parseHTML('<div class="marker">\
+		div = this.div = $.parseHTML('<div id="marker-id-' + this.args.id + '" class="marker">\
 			<div class="marker-img" style="background-image: url(' + this.args.avatar + ');">\
 				<div class="marker-info">\
 					<div class="marker-name">' + this.args.name + '</div>\
@@ -23,18 +47,20 @@ Marker.prototype.draw = function() {
 		</div>')[0];
 
 		google.maps.event.addDomListener(div, "click", function(event) {
+			isMarkerClick = true;
 			var e = $(event.currentTarget);
+			if (markerSelected && markerSelected.attr('id') !== e.attr('id')) {
+				collapse(markerSelected);
+			}
 			var isExpanded = e.hasClass('marker-expand');
-			e.toggleClass('marker-expand');
-			var top = parseFloat(e.css('top'));
-			var left = parseFloat(e.css('left'));
+
 			if (!isExpanded) {
-				e.css('top', top + 64 - 168);
-				e.css('left', left + 32 - 84);
+				markerSelected = e;
+				expand(e);
 			}
 			else {
-				e.css('top', top - 64 + 168);
-				e.css('left', left - 32 + 84);
+				markerSelected = null;
+				collapse(e);
 			}
 			google.maps.event.trigger(self, "click");
 		});

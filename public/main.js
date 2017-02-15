@@ -7,6 +7,7 @@ var data = {
 		avatar: 'https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p320x320/13532795_1022906467778032_4231862249323927331_n.jpg?oh=db36b9a80bc02ff5c6ee0f66883020a1&oe=5906111C'
 	},
 	people: [{
+		id: 1,
 		position: {
 			lat: 21.0330158,
 			lng: 105.78863460000001
@@ -17,6 +18,7 @@ var data = {
 		avatar: 'https://scontent.fhan5-1.fna.fbcdn.net/v/t1.0-1/c23.0.578.578/s200x200/580276_530823103646020_938195608_n.jpg?oh=e572a97ca7bbbded0c7d6b5b569a6802&oe=593164D9'
 	},
 	{
+		id: 2,
 		position: {
 			lat: 21.0250158,
 			lng: 105.78963460000001
@@ -27,6 +29,7 @@ var data = {
 		avatar: 'https://scontent.fhan5-1.fna.fbcdn.net/v/t1.0-1/p200x200/16114579_1787919698197945_5452793200386707193_n.jpg?oh=a8237910eb650cbc30237a282ec6cbc2&oe=59307D10'
 	},
 	{
+		id: 3,
 		position: {
 			lat: 21.0230158,
 			lng: 105.78063460000001
@@ -57,6 +60,10 @@ function initMap() {
 		rotateControl: false,
 		fullscreenControl: false
 	});
+
+	data.map.addListener('click', function() {
+		setTimeout(Marker.collapseAll, 100);
+	})
 	data.people.forEach(function(e) {
 		e.marker = new Marker(
 			new google.maps.LatLng(e.position.lat,e.position.lng),
