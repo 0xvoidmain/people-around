@@ -65,19 +65,24 @@ function initMap() {
 		);
 	});
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			var myLatLng = {
-				lng: position.coords.longitude,
-				lat: position.coords.latitude
-			};
-			data.map.panTo(new google.maps.LatLng(myLatLng.lat, myLatLng.lng));
-			data.me.position = myLatLng;
-			data.me.marker = new Marker(
-				new google.maps.LatLng(data.me.position.lat, data.me.position.lng),
-				data.map,
-				data.me
-			);
-		});
+		try {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var myLatLng = {
+					lng: position.coords.longitude,
+					lat: position.coords.latitude
+				};
+				data.map.panTo(new google.maps.LatLng(myLatLng.lat, myLatLng.lng));
+				data.me.position = myLatLng;
+				data.me.marker = new Marker(
+					new google.maps.LatLng(data.me.position.lat, data.me.position.lng),
+					data.map,
+					data.me
+				);
+			});
+		}
+		catch (ex) {
+			alert("Geolocation is not supported by this browser.");
+		}
 	} else {
 		alert("Geolocation is not supported by this browser.");
 	}
