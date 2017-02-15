@@ -41,39 +41,42 @@ var data = {
 
 google.maps.event.addDomListener(window, 'load', initMap);
 function initMap() {
+	data.map = new google.maps.Map(document.getElementById('map'), {
+		center: {
+			lat: 21.0278,
+			lng: 105.8342
+		},
+		scrollwheel: false,
+		styles: mapStyles,
+		zoom: 15,
+		disableDoubleClickZoom: true,
+		zoomControl: true,
+		mapTypeControl: false,
+		scaleControl: false,
+		streetViewControl: false,
+		rotateControl: false,
+		fullscreenControl: false
+	});
+	data.people.forEach(function(e) {
+		e.marker = new Marker(
+			new google.maps.LatLng(e.position.lat,e.position.lng),
+			data.map,
+			e
+		);
+	});
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			var myLatLng = {
 				lng: position.coords.longitude,
 				lat: position.coords.latitude
 			};
+			data.map.panTo(new google.maps.LatLng(myLatLng.lat, myLatLng.lng));
 			data.me.position = myLatLng;
-
-			data.map = new google.maps.Map(document.getElementById('map'), {
-				center: myLatLng,
-				scrollwheel: false,
-				styles: mapStyles,
-				zoom: 15,
-				disableDoubleClickZoom: true,
-				zoomControl: true,
-				mapTypeControl: false,
-				scaleControl: false,
-				streetViewControl: false,
-				rotateControl: false,
-				fullscreenControl: false
-			});
 			data.me.marker = new Marker(
 				new google.maps.LatLng(data.me.position.lat, data.me.position.lng),
 				data.map,
 				data.me
 			);
-			data.people.forEach(function(e) {
-				e.marker = new Marker(
-					new google.maps.LatLng(e.position.lat,e.position.lng),
-					data.map,
-					e
-				);
-			});
 		});
 	} else {
 		alert("Geolocation is not supported by this browser.");
