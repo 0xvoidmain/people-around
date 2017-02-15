@@ -4,10 +4,10 @@ body {
   overflow: hidden;
 }
 
-/*#map {
-  height: calc(100vh + 25px) !important;
+#map {
+  height: 100vh;
 }
-
+/*
 .gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
   bottom: 80px !important;
 }*/
