@@ -46,11 +46,11 @@ function initMap() {
 			lat: 21.0278,
 			lng: 105.8342
 		},
-		scrollwheel: false,
+		scrollwheel: true,
 		styles: mapStyles,
 		zoom: 15,
 		disableDoubleClickZoom: true,
-		zoomControl: true,
+		zoomControl: false,
 		mapTypeControl: false,
 		scaleControl: false,
 		streetViewControl: false,
